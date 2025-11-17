@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95af54ad1fcde364c97c06d0ad9ea641, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  baseStartingHealth: 100
+  baseHealth: 100
+  baseHealthRegen: 1
+  baseMoveSpeed: 2.5
+  baseSize: 2.5
+  baseLuck: 1
+  baseMass: 750
+  basePickupRadius: 0.5
+  baseXpGains: 1
+  startingHealth: 100
+  health: 100
+  healthRegen: 1
+  moveSpeed: 2.5
+  size: 2.5
+  luck: 1
+  mass: 750
+  pickupRadius: 0.5
+  XpGains: 1
+  experience: 0
+  level: 1

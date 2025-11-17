@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758ed4aafbedde49973b7f95ab9ca24, type: 3}
+  m_Name: IceBlast_Stats
+  m_EditorClassIdentifier: 
+  magicType: 0
+  magicName: IceBlast
+  magicIcon: {fileID: 0}
+  level: 1
+  isActive: 0
+  projectileMagicStats:
+    baseSpeed: 10
+    baseDamage: 2
+    baseSize: 1
+    baseAttackRate: 1
+    baseProjectileAmount: 1
+    baseProjectileSpread: 0.4
+    baseHasImpactEffect: 1
+    impactEffectPrefab: {fileID: 1761588839796766396, guid: 0647b7c4b0b99174faeb243e3e836016, type: 3}
+    baseEffectDuration: 0.6
+    baseEffectDamageRadius: 1
+    baseEffectDamage: 8
+    baseEffectSize: 2.5
+    speed: 10
+    damage: 2
+    size: 1
+    attackRate: 1
+    projectileAmount: 1
+    projectileSpread: 0.4
+    hasImpactEffect: 1
+    EffectDuration: 0.6
+    EffectDamageRadius: 1
+    EffectDamage: 8
+    EffectSize: 2.5
+  aroundPlayerMagicStats:
+    baseRadius: 3
+    baseDamage: 10
+    baseSize: 2
+    baseAttackRate: 1
+    radius: 3
+    damage: 10
+    size: 2
+    attackRate: 1
+  atTargetMagicStats:
+    baseDamage: 15
+    baseSize: 1
+    baseAttackRate: 2
+    damage: 15
+    size: 1
+    attackRate: 2

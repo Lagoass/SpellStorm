@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758ed4aafbedde49973b7f95ab9ca24, type: 3}
+  m_Name: ShockAreaStats
+  m_EditorClassIdentifier: 
+  magicType: 1
+  magicName: ShockArea
+  level: 1
+  isActive: 0
+  projectileMagicStats:
+    baseSpeed: 10
+    baseDamage: 5
+    baseSize: 1
+    baseAttackRate: 0.5
+    baseHasImpactEffect: 0
+    impactEffectPrefab: {fileID: 0}
+    baseEffectDuration: 1
+    baseEffectDamageRadius: 2
+    baseEffectDamage: 10
+    baseEffectSize: 1
+    speed: 10
+    damage: 5
+    size: 1
+    attackRate: 0.5
+    Target: {fileID: 0}
+    hasImpactEffect: 0
+    EffectDuration: 1
+    EffectDamageRadius: 2
+    EffectDamage: 10
+    EffectSize: 1
+  aroundPlayerMagicStats:
+    baseRadius: 3
+    baseDamage: 5
+    baseSize: 2
+    baseAttackRate: 0.5
+    radius: 3
+    damage: 5
+    size: 2
+    attackRate: 0.5
+  atTargetMagicStats:
+    baseDamage: 15
+    baseSize: 1
+    baseAttackRate: 2
+    damage: 15
+    size: 1
+    attackRate: 2

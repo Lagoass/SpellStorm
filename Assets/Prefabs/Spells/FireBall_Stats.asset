@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758ed4aafbedde49973b7f95ab9ca24, type: 3}
+  m_Name: FireBall_Stats
+  m_EditorClassIdentifier: 
+  magicType: 0
+  magicName: FireBall
+  magicIcon: {fileID: 583370505719427545, guid: e8ae57881dcc8e9489834c16b5c56140, type: 3}
+  level: 1
+  isActive: 0
+  projectileMagicStats:
+    baseSpeed: 4
+    baseDamage: 5
+    baseSize: 0.15
+    baseAttackRate: 1
+    baseProjectileAmount: 1
+    baseProjectileSpread: 0.8
+    baseHasImpactEffect: 1
+    impactEffectPrefab: {fileID: 7128192046968735775, guid: 95c4aa598ccd74541890f6ef8f242bf2, type: 3}
+    baseEffectDuration: 0.5
+    baseEffectDamageRadius: 1
+    baseEffectDamage: 10
+    baseEffectSize: 1
+    speed: 4
+    damage: 5
+    size: 0.15
+    attackRate: 1
+    projectileAmount: 1
+    projectileSpread: 0.8
+    hasImpactEffect: 1
+    EffectDuration: 0.5
+    EffectDamageRadius: 1
+    EffectDamage: 10
+    EffectSize: 1
+  aroundPlayerMagicStats:
+    baseRadius: 3
+    baseDamage: 10
+    baseSize: 2
+    baseAttackRate: 1
+    radius: 3
+    damage: 10
+    size: 2
+    attackRate: 1
+  atTargetMagicStats:
+    baseDamage: 15
+    baseSize: 1
+    baseAttackRate: 2
+    damage: 15
+    size: 1
+    attackRate: 2

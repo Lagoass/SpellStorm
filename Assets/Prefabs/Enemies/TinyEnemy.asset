@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4c765d592da424491c7704b59c11de, type: 3}
+  m_Name: TinyEnemy
+  m_EditorClassIdentifier: 
+  enemyName: Tiny
+  baseStartingHealth: 20
+  baseHealth: 20
+  baseMoveSpeed: 1.5
+  baseDamage: 4
+  baseSize: 1.5
+  baseAttackRate: 0
+  baseValue: 0
+  baseMass: 0
+  startingHealth: 25
+  health: 25
+  moveSpeed: 2
+  damage: 2
+  size: 1.5
+  attackRate: 2
+  value: 0
+  mass: 0
