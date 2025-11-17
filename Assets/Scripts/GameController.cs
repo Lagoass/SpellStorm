@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Diagnostics; 
 
 public class GameController : MonoBehaviour
 {
@@ -12,7 +11,8 @@ public class GameController : MonoBehaviour
     [Header("Player Stats")]
     public PlayerStats playerStats;
     [Header("Enemy Stats")]
-    public List<EnemyStats> enemyStatsList;
+    [Tooltip("Lista de TODOS os assets de EnemyStats (Tiny, Red, etc.) para aplicar o escalonamento.")]
+    public List<EnemyStats> allEnemyStats; // (Substitui a antiga enemyStatsList)
     
     [Header("Magic Stats")]
     public MagicStats FireBallStats;
@@ -31,9 +31,11 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI experienceText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI waveText;
     public List<Image> lstxpBar;
     public List<Image> lsthealthBar;
     public GameObject playerHealthBar;
+    
     [Header("Screen Controllers")]
     public GameObject pauseMenu;
     public GameObject gameOverScreen;
@@ -42,28 +44,27 @@ public class GameController : MonoBehaviour
     public GameObject levelUpScreen;
     public LevelUp levelUpController;
     
-    // --- MUDANÇAS NO REQUISITO DE XP ---
+    // --- NOVO SISTEMA DE ONDAS ---
+    [Header("Wave Configuration")]
+    [Tooltip("A lista de todas as ondas (WaveConfig assets) em ordem.")]
+    public List<WaveConfig> waveConfigs;
+    [Tooltip("Referência ao 'Executor' de spawn.")]
+    public EnemySpawner enemySpawner; 
+    
+    private int currentWaveIndex = -1;
+    private float waveEndTime;
+    // --- FIM DO NOVO SISTEMA ---
+
     [Header("Leveling Curve")]
-    [Tooltip("O XP necessário para o Nível 2.")]
     public float baseXpRequirement = 1000f;
-    [Tooltip("O primeiro aumento de XP (ex: 200).")]
     public float initialXpIncrease = 200f;
-    [Tooltip("Quanto o aumento cresce a cada nível (ex: 50).")]
     public float xpIncreaseGrowth = 50f;
 
-    [HideInInspector]
-    public float xpPerLevel; // Controlado pela nova lógica
-    
-    [HideInInspector]
-    private float currentXpIncrease; // Variável de runtime para a "soma da soma"
-    // --- FIM DAS MUDANÇAS ---
-    
-    [HideInInspector]
-    private bool isGamePaused = false;
-    [HideInInspector] 
-    public bool isLevelingUp = false; 
-    [HideInInspector] 
-    public bool canSpawn = true; 
+    [HideInInspector] public float xpPerLevel; 
+    [HideInInspector] private float currentXpIncrease; 
+    [HideInInspector] private bool isGamePaused = false;
+    [HideInInspector] public bool isLevelingUp = false; 
+    [HideInInspector] public bool canSpawn = true; 
 
     void Start()
     {
@@ -81,6 +82,14 @@ public class GameController : MonoBehaviour
             isGamePaused = TogglePause();
         }
         
+        // --- LÓGICA DE CONTROLE DE ONDA ---
+        // Se o jogo não está pausado e o tempo da onda acabou...
+        if (!isGamePaused && !isLevelingUp && Time.time > waveEndTime)
+        {
+            StartNextWave();
+        }
+        // --- FIM DA LÓGICA ---
+        
         EndGameDefeat();
         EndGameVictory();
         LevelUpCheck();
@@ -90,6 +99,42 @@ public class GameController : MonoBehaviour
         UpdateUIText();
         TimeManagement();
     }
+    
+    // --- NOVAS FUNÇÕES DE ONDA ---
+    void StartNextWave()
+    {
+        currentWaveIndex++; 
+        
+        if (currentWaveIndex >= waveConfigs.Count)
+        {
+            // Fim do jogo (vitória) ou modo infinito
+            currentWaveIndex = waveConfigs.Count - 1; 
+            Debug.LogWarning("Todas as ondas completas. Repetindo a última onda.");
+            // Você pode chamar EndGameVictory() aqui se 10 ondas = vitória
+        }
+
+        WaveConfig currentWave = waveConfigs[currentWaveIndex];
+
+        // 1. Define o tempo de término
+        waveEndTime = Time.time + currentWave.waveDuration;
+
+        // 2. Escalone TODOS os inimigos para o nível desta onda
+        foreach (var enemyStat in allEnemyStats)
+        {
+            if (enemyStat != null)
+            {
+                enemyStat.InitializeForWave(currentWave.enemyStatLevel);
+            }
+        }
+
+        // 3. Comanda o Spawner para executar esta onda
+        if (enemySpawner != null)
+        {
+            enemySpawner.StartNewWave(currentWave);
+        }
+    }
+    
+    // --- FIM DAS NOVAS FUNÇÕES ---
 
     public void TimeManagement()
     {
@@ -121,18 +166,12 @@ public class GameController : MonoBehaviour
     public void LevelUpCheck()
     {
         if (playerStats.experience < xpPerLevel) return;
-        
         if (isLevelingUp) return;
 
         playerStats.level += 1;
         playerStats.experience -= xpPerLevel; 
-
-        // --- MUDANÇA: LÓGICA "SOMA DA SOMA" ---
-        // Define o requisito para o PRÓXIMO nível
         xpPerLevel += currentXpIncrease; 
-        // Aumenta o valor do PRÓXIMO aumento
         currentXpIncrease += xpIncreaseGrowth; 
-        // --- FIM DA MUDANÇA ---
 
         if (levelUpController != null)
         {
@@ -147,6 +186,8 @@ public class GameController : MonoBehaviour
         healthText.text = playerStats.health.ToString("F0");
         experienceText.text = playerStats.experience.ToString("F0") + " | " + xpPerLevel.ToString("F0");
         levelText.text = "Lvl: " + playerStats.level.ToString("F0");
+        waveText.text = "Wave: " + (currentWaveIndex + 1).ToString();
+
     }
     
     public bool TogglePause()
@@ -187,6 +228,8 @@ public class GameController : MonoBehaviour
     public void EndGameVictory()
     {
         if (GameStopwatch.ElapsedTimeSec() < 600f) return; 
+        if (gameOverScreen.activeSelf) return; 
+        
         gameOverScreen.SetActive(true);
         gameOverScreenVictory.SetActive(true);
         Time.timeScale = 0f; 
@@ -220,9 +263,12 @@ public class GameController : MonoBehaviour
     public void Reset()
     {
         playerStats.ResetStats();
-        foreach (var enemyStats in enemyStatsList)
+        
+        // Reseta todos os inimigos para o Nível 1 no início
+        foreach (var enemyStats in allEnemyStats) 
         {
-            enemyStats.ResetStats();
+            if (enemyStats != null)
+                enemyStats.InitializeForWave(1); 
         }
 
         if (MagicBoltStats != null) MagicBoltStats.ResetStats(true); 
@@ -237,10 +283,10 @@ public class GameController : MonoBehaviour
         
         Time.timeScale = 1f;
 
-        // --- MUDANÇA: INICIALIZA A CURVA DE XP ---
         xpPerLevel = baseXpRequirement;
         currentXpIncrease = initialXpIncrease;
-        // --- FIM DA MUDANÇA ---
+        currentWaveIndex = -1; // Reseta o índice da onda
+        waveEndTime = Time.time - 1f; // Força o StartNextWave no primeiro frame
 
         isLevelingUp = false;
         isGamePaused = false;

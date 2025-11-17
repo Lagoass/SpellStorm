@@ -21,7 +21,8 @@ public class Enemy : MonoBehaviour
     private float currentMoveSpeed;
 
     // --- VARIÁVEIS DO MODO BATCH ---
-    private bool isOverridden = false;
+    [HideInInspector]
+    public bool isOverridden = false;
     private Vector2 overrideDirection;
     private float overrideSpeed;
     // --- FIM DA ADIÇÃO ---
