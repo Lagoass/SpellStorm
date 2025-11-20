@@ -13,19 +13,16 @@ public class Enemy : MonoBehaviour
     private Stopwatch frozenStopwatch = new Stopwatch();
     public Vector2 MoveDirection;
     public EnemyAnimator enemyAnimator;
-    [HideInInspector]
-    public bool isFrozen = false;
+    
+    [HideInInspector] public bool isFrozen = false;
     public float effectDuration = 0f;
 
     private float currentHealth; 
     private float currentMoveSpeed;
 
-    // --- VARIÁVEIS DO MODO BATCH ---
-    [HideInInspector]
-    public bool isOverridden = false;
+    [HideInInspector] public bool isOverridden = false;
     private Vector2 overrideDirection;
     private float overrideSpeed;
-    // --- FIM DA ADIÇÃO ---
 
     void Awake()
     {
@@ -36,13 +33,11 @@ public class Enemy : MonoBehaviour
     void OnEnable()
     {
         currentHealth = Stats.health; 
-        currentMoveSpeed = Stats.moveSpeed; // Velocidade padrão do SO
+        currentMoveSpeed = Stats.moveSpeed; 
         isFrozen = false;
         effectDuration = 0f;
         BlueOverlay(false);
-        
         isOverridden = false; 
-        
         rb.mass = Stats.mass;
     }
 
@@ -75,33 +70,26 @@ public class Enemy : MonoBehaviour
 
         if (isOverridden)
         {
-            // Evento Batch: Usa a velocidade e direção forçadas
             rb.linearVelocity = overrideDirection * overrideSpeed;
         }
         else
         {
-            // Evento Circle ou Gotejamento: Usa a velocidade 'currentMoveSpeed'
-            // (que pode ter sido alterada pelo SetSpeed)
             rb.linearVelocity = new Vector2(MoveDirection.x, MoveDirection.y) * currentMoveSpeed;
         }
     }
 
-    // Função chamada pelo Evento Batch do Spawner
     public void SetOverrideMovement(Vector2 direction, float speed)
     {
         overrideDirection = direction.normalized;
         overrideSpeed = speed;
         isOverridden = true;
     }
-
-    // --- NOVA FUNÇÃO ---
-    // Chamada pelo Evento Circle para apenas mudar a velocidade,
-    // mantendo o inimigo seguindo o jogador (isOverridden = false).
+    
     public void SetSpeed(float newSpeed)
     {
+        if (newSpeed == 0) return;
         currentMoveSpeed = newSpeed;
     }
-    // --- FIM DA NOVA FUNÇÃO ---
 
     void DirectionToPlayer()
     {
@@ -120,16 +108,26 @@ public class Enemy : MonoBehaviour
             isFrozen = true;
             effectDuration = effectDurationReceived;
             frozenStopwatch.Restart();
+            
+            // --- MUDANÇA AQUI ---
+            // Ao ser congelado, o inimigo "esquece" a ordem de Batch
+            if (isOverridden)
+            {
+                isOverridden = false;
+                // Opcional: Se quiser que ele volte à velocidade normal do Stats ao descongelar,
+                // em vez da velocidade rápida do Batch:
+                currentMoveSpeed = Stats.moveSpeed; 
+            }
+            // --------------------
         }
     }
 
     public void Die()
     {
         gameObject.SetActive(false);
-        
         if (expSpawner != null)
         {
-            expSpawner.SpawnExperience(transform.position);
+            expSpawner.SpawnExperience(transform.position, Stats.enemyName);
         }
     }
 
@@ -138,28 +136,21 @@ public class Enemy : MonoBehaviour
         if (isFrozen)
         {
             BlueOverlay(true);
-            // Não precisamos definir currentMoveSpeed = 0 aqui,
-            // pois o FixedUpdate já para se isFrozen = true
-            rb.linearVelocity = Vector2.zero; 
+            rb.linearVelocity = Vector2.zero; // Para o movimento completamente
             
             if (frozenStopwatch.ElapsedTimeSec() >= effectDuration)
             {
                 BlueOverlay(false);
                 isFrozen = false;
-                currentMoveSpeed = Stats.moveSpeed; // Reseta para a velocidade do SO
+                // Como já setamos isOverridden = false no TakeDamage,
+                // ele vai voltar a usar 'currentMoveSpeed' e perseguir o jogador.
             }
         }
     }
 
     public void BlueOverlay(bool state)
     {
-        if (state)
-        {
-            spriteRenderer.color = Color.cyan;
-        }
-        else
-        {
-            spriteRenderer.color = Color.white;
-        }
+        if (state) spriteRenderer.color = Color.cyan;
+        else spriteRenderer.color = Color.white;
     }
 }

@@ -398,7 +398,6 @@ public class LevelUp : MonoBehaviour
         
         if (CardsOptions.Count == 0)
         {
-            Debug.LogWarning("CardsOptions vazia. Executando setup imediato.");
             levelUpCardsSetup();
         }
 

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicType: 0
   magicName: IceBlast
-  magicIcon: {fileID: 0}
+  magicIcon: {fileID: -963791335356448533, guid: 7cff8ef3663ba264ea021fdb4856d9d4, type: 3}
   level: 1
-  isActive: 0
+  isActive: 1
   projectileMagicStats:
     baseSpeed: 10
     baseDamage: 2

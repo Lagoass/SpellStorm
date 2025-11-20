@@ -29,6 +29,8 @@ public class CircleSettings
     
     [Tooltip("O número MÁXIMO de inimigos neste evento.")]
     public int maxSpawnCount = 15;
+    [Tooltip("A velocidade forçada para os inimigos do Circle.")]
+    public float speedOverride = 0.5f;
     
     // Os raios (8-10) e a velocidade (0.5) serão valores padrão no EnemySpawner, como você pediu.
 }

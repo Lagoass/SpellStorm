@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicType: 1
   magicName: ShockArea
+  magicIcon: {fileID: -1045133410153605164, guid: 5c0c8d80105e20d4697f9a166963e910, type: 3}
   level: 1
   isActive: 0
   projectileMagicStats:
@@ -21,6 +22,8 @@ MonoBehaviour:
     baseDamage: 5
     baseSize: 1
     baseAttackRate: 0.5
+    baseProjectileAmount: 1
+    baseProjectileSpread: 0
     baseHasImpactEffect: 0
     impactEffectPrefab: {fileID: 0}
     baseEffectDuration: 1
@@ -31,7 +34,8 @@ MonoBehaviour:
     damage: 5
     size: 1
     attackRate: 0.5
-    Target: {fileID: 0}
+    projectileAmount: 1
+    projectileSpread: 0
     hasImpactEffect: 0
     EffectDuration: 1
     EffectDamageRadius: 2

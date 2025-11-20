@@ -133,8 +133,6 @@ public class GameController : MonoBehaviour
             enemySpawner.StartNewWave(currentWave);
         }
     }
-    
-    // --- FIM DAS NOVAS FUNÇÕES ---
 
     public void TimeManagement()
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicType: 0
   magicName: Magic Bolt
-  magicIcon: {fileID: 0}
+  magicIcon: {fileID: -3869948979953859132, guid: 11074c1f3e2188041891ba098ba9dd90, type: 3}
   level: 1
   isActive: 1
   projectileMagicStats:
@@ -22,7 +22,7 @@ MonoBehaviour:
     baseDamage: 5
     baseSize: 0.2
     baseAttackRate: 0.6
-    baseProjectileAmount: 20
+    baseProjectileAmount: 1
     baseProjectileSpread: 2
     baseHasImpactEffect: 0
     impactEffectPrefab: {fileID: 0}
@@ -34,7 +34,7 @@ MonoBehaviour:
     damage: 5
     size: 0.2
     attackRate: 0.6
-    projectileAmount: 20
+    projectileAmount: 1
     projectileSpread: 2
     hasImpactEffect: 0
     EffectDuration: 1

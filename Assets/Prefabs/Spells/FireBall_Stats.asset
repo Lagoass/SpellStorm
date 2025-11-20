@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicType: 0
   magicName: FireBall
-  magicIcon: {fileID: 583370505719427545, guid: e8ae57881dcc8e9489834c16b5c56140, type: 3}
+  magicIcon: {fileID: -5750353039905602045, guid: ecba07e354f6563479fbdbd818d76e37, type: 3}
   level: 1
   isActive: 0
   projectileMagicStats:
