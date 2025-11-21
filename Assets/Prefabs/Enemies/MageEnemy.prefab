@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 6338757941821966729}
   - component: {fileID: 8294635137359517485}
   - component: {fileID: 1045390115160885469}
+  - component: {fileID: 6618140849149713219}
+  - component: {fileID: 2872779651046897915}
   m_Layer: 0
   m_Name: MageEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,3 +178,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6618140849149713219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756320341948358482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c005c349227414797a9abcb3f1407a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats: {fileID: 11400000, guid: 7aa8886008e832a4e85c4a408555051b, type: 2}
+  enemyAnimator: {fileID: 2872779651046897915}
+  MoveDirection: {x: 0, y: 0}
+  isOverridden: 0
+  isFrozen: 0
+  effectDuration: 0
+--- !u!114 &2872779651046897915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756320341948358482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bf9cccb0ec5da48adb0052282a4a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

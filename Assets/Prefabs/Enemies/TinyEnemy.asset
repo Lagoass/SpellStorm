@@ -13,19 +13,24 @@ MonoBehaviour:
   m_Name: TinyEnemy
   m_EditorClassIdentifier: 
   enemyName: Tiny
-  baseStartingHealth: 20
+  spawnCost: 10
   baseHealth: 20
   baseMoveSpeed: 1.5
   baseDamage: 4
   baseSize: 1.5
   baseAttackRate: 0
-  baseValue: 0
   baseMass: 0
-  startingHealth: 25
+  projectileType: 
+  attackRange: 8
+  keepDistance: 5
+  chargeTime: 1
+  projectileSpeed: 6
+  preAttackVisual: {fileID: 0}
+  healthPerLevel: 10
+  damagePerLevel: 2
   health: 25
   moveSpeed: 2
   damage: 2
   size: 1.5
   attackRate: 2
-  value: 0
   mass: 0

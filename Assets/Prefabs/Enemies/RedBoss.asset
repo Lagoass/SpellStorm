@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4c765d592da424491c7704b59c11de, type: 3}
+  m_Name: RedBoss
+  m_EditorClassIdentifier: 
+  enemyName: RedBoss
+  enemyType: 0
+  spawnCost: 0
+  baseHealth: 1000
+  baseMoveSpeed: 1
+  baseDamage: 20
+  baseSize: 10
+  baseAttackRate: 0
+  baseMass: 100
+  projectileType: 
+  attackRange: 8
+  keepDistance: 5
+  chargeTime: 1
+  projectileSpeed: 6
+  preAttackVisual: {fileID: 0}
+  healthPerLevel: 10
+  damagePerLevel: 2
+  health: 1000
+  moveSpeed: 1
+  damage: 20
+  size: 10
+  attackRate: 0
+  mass: 0

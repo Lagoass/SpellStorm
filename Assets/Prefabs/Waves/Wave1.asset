@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fef6c41afc2d2e74fbe7a1fed23aa951, type: 2}
   enemyStatLevel: 1
   trickleSpawnInterval: 1
-  maxTrickleEnemies: 10
+  maxTrickleEnemies: 30
   eventInterval: 10
   enableBatchEvents: 0
   batchSettings:

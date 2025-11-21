@@ -19,7 +19,7 @@ MonoBehaviour:
   isActive: 1
   projectileMagicStats:
     baseSpeed: 10
-    baseDamage: 5
+    baseDamage: 8
     baseSize: 0.2
     baseAttackRate: 0.6
     baseProjectileAmount: 1
@@ -31,10 +31,10 @@ MonoBehaviour:
     baseEffectDamage: 10
     baseEffectSize: 1
     speed: 10
-    damage: 5
+    damage: 8
     size: 0.2
     attackRate: 0.6
-    projectileAmount: 1
+    projectileAmount: 10
     projectileSpread: 2
     hasImpactEffect: 0
     EffectDuration: 1

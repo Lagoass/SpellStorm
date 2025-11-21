@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Wave7
   m_EditorClassIdentifier: 
   waveDuration: 30
-  totalBudget: 1800
+  totalBudget: 2000
   availableEnemies:
   - {fileID: 11400000, guid: fef6c41afc2d2e74fbe7a1fed23aa951, type: 2}
-  - {fileID: 11400000, guid: c52eedb1f64b64048bf51987117ddb05, type: 2}
+  - {fileID: 11400000, guid: 7aa8886008e832a4e85c4a408555051b, type: 2}
   enemyStatLevel: 6
   trickleSpawnInterval: 0.2
   maxTrickleEnemies: 50
@@ -30,3 +30,4 @@ MonoBehaviour:
   circleSettings:
     minSpawnCount: 10
     maxSpawnCount: 15
+    speedOverride: 0.5

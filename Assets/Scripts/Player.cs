@@ -34,19 +34,19 @@ public class Player : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Enemy")) return;
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        takeDamage(enemy.Stats.damage);
+        TakeDamage(enemy.Stats.damage);
     }
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (damageStopwatch.ElapsedTimeSec() < 0.25f) { return; }
-
+        SoundManager.Instance.PlaySound(SoundType.PlayerDamage);
         Stats.health -= damage;
         playerAnimator.PlayHurtAnimation();
         damageStopwatch.Restart();
     }
     public void HealthRegen()
     {
-        if (regenStopwatch.ElapsedTimeSec() < 1f) { return; }
+        if (regenStopwatch.ElapsedTimeSec() < 1.5f) { return; }
         Stats.health += Stats.healthRegen;
         if (Stats.health > Stats.startingHealth)
         {

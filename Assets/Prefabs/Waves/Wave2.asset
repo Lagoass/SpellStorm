@@ -17,7 +17,7 @@ MonoBehaviour:
   availableEnemies:
   - {fileID: 11400000, guid: fef6c41afc2d2e74fbe7a1fed23aa951, type: 2}
   enemyStatLevel: 1
-  trickleSpawnInterval: 0.5
+  trickleSpawnInterval: 0.6
   maxTrickleEnemies: 22
   eventInterval: 20
   enableBatchEvents: 0
@@ -25,7 +25,8 @@ MonoBehaviour:
     minSpawnCount: 15
     maxSpawnCount: 20
     speedOverride: 4
-  enableAroundEvents: 0
+  enableAroundEvents: 1
   circleSettings:
     minSpawnCount: 10
     maxSpawnCount: 15
+    speedOverride: 0

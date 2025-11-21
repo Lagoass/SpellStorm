@@ -13,19 +13,24 @@ MonoBehaviour:
   m_Name: RedEnemy
   m_EditorClassIdentifier: 
   enemyName: Red
-  baseStartingHealth: 40
+  spawnCost: 20
   baseHealth: 40
   baseMoveSpeed: 1
   baseDamage: 10
   baseSize: 3.2
   baseAttackRate: 0
-  baseValue: 0
   baseMass: 0
-  startingHealth: 50
+  projectileType: 
+  attackRange: 8
+  keepDistance: 5
+  chargeTime: 1
+  projectileSpeed: 6
+  preAttackVisual: {fileID: 0}
+  healthPerLevel: 10
+  damagePerLevel: 2
   health: 50
   moveSpeed: 1
   damage: 5
   size: 3
   attackRate: 0.75
-  value: 0
   mass: 0

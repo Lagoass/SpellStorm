@@ -75,7 +75,7 @@ public class ProjectileController : MonoBehaviour
     {
         // Pega a quantidade do SO (que foi resetado ou aumentado pelo LevelUp)
         int amount = Stats.projectileMagicStats.projectileAmount;
-
+        PlayShootSound();
         for (int i = 0; i < amount; i++)
         {
             GameObject projectileGO = pool.GetPooledObject();
@@ -116,6 +116,18 @@ public class ProjectileController : MonoBehaviour
         shootStopwatch.Restart();
     }
     
+    void PlayShootSound()
+    {
+        if (Stats.magicName.Contains("Fire")) 
+            SoundManager.Instance.PlaySound(SoundType.Fireball);
+        
+        else if (Stats.magicName.Contains("Ice")) 
+            SoundManager.Instance.PlaySound(SoundType.IceBlast);
+            
+        else if (Stats.magicName.Contains("Bolt")) 
+            SoundManager.Instance.PlaySound(SoundType.MagicBolt);
+    }
+
     void OnDrawGizmos()
     {
         if (!ShowGizmos || player == null) return;
